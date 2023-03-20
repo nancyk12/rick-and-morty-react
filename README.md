@@ -21,19 +21,3 @@ Stretch:
 (Hint: use react state to hold the urls from the response)
 Stretch Stretch:
 - Click on the card and flip the card over to display the number of episodes the character was in, location and origin.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

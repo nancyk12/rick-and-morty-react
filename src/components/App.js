@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "./Card";
-import contacts from "../characters";
+import characters from "../characters";
 
 // for arrow functions etc. look at react-tutorial1, Table.js, line 38
 // Key function?
