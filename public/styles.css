@@ -26,6 +26,31 @@ body {
   text-align: left;
 }
 
+.inner-card{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card:active .inner-card {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.front, .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
 .top {
   border-radius: 25px 25px 0 0;
   height: 120px;
@@ -64,3 +89,5 @@ body {
   margin: 20px 0;
   color: #1a7e76;
 }
+
+

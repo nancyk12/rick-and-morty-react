@@ -1,3 +1,42 @@
+
+
+
+// function characters() {
+//   const [characters, setCharacter] = useState([]);
+// }
+
+// useEffect(() => {
+//   async function fetchData() {
+//     const res = await fetch(
+//       `https://rickandmortyapi.com/api/character`
+//     );
+
+//     const json = await res.json();
+//    setCharacter(json.results.map(
+//       c => {
+//         return {
+//           'id': c.id,
+//           'characterImage': c.image,
+//           'name': c.name,
+//           'gender': c.gender,
+//           'species': c.species,
+//           'characterStatus': c.status
+//         }
+
+//       }
+//    )); 
+//   }
+
+//   fetchData();
+// }, []);
+// return (
+//   character.map(character => 
+//    <div>
+//       <h1 className="heading">Rick and Morty Characters</h1>
+//         {characters.map(createCard)} 
+//   </div>
+//   )
+//   )
 const characters = [
   {
       id: 1,
