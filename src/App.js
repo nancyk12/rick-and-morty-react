@@ -1,51 +1,67 @@
 import React, { useEffect, useState } from "react";
-import Card from "./Card";
+import Card from "./components/Card";
+
 //import "./styles.css";
 
 const App = () => {
-  const [allCharacters, setAllCharacters] = useState([]);
+  const [characters, setCharacters] = useState([]);
+
+  const fetchCharacters = () => {
+    fetch(`https://rickandmortyapi.com/api/character`)
+    .then(response => response.json())
+    .then((json) => setCharacters(json))
+  }
 
   useEffect(() => {
-      async function getAllCharacters(){
-      let response = await fetch(
-       `https://rickandmortyapi.com/api/character?page=${count}`
-      );
-      let data = await response.json();
-      setAllCharacters(data.results);
-      setTotalPages(data.info.pages);
-      }
+   fetchCharacters();
+}, [])
+
+  return (
+
+    <div>
+
+    <h1 className="heading">Rick and Morty Characters</h1>
+   
+  
+
+    <Card 
+    key={characters.id}  
+    name={characters.name}
+    status={characters.status}
+    species={characters.species}
+    gender={characters.gender}
+    image={characters.image}
+    episodes={characters.episode}
+    location={characters.location}
+    origin={characters.origin}
+  />
+  </div>
+  )
+
+    
+  // )
+  // useEffect(() => {
+  //     async function getCharacters(){
+  //     let response = await fetch(
+  //      `https://rickandmortyapi.com/api/character?page=${count}`
+  //     );
+  //     let data = await response.json();
+  //     setAllCharacters(data.results);
+  //     setTotalPages(data.info.pages);
+  //     }
       
-    getAllCharacters();
-    }, [count]);
+  //   getAllCharacters();
+  //   }, [count]);
 
-    let next = () => {
-      setCount((prevCount) => prevCount + 1);
-    };
+  //   let next = () => {
+  //     setCount((prevCount) => prevCount + 1);
+  //   };
 
-    let prevCount = () => {
-      setCount((prevCount) => prevCount - 1);
-    };
+  //   let prevCount = () => {
+  //     setCount((prevCount) => prevCount - 1);
+  //   };
 
-    return (
-      <div>
-        <h1 className="heading">Rick and Morty Characters</h1>
-        <h2 className="page-count">Characters: Page {count} of {totalPages}</h2>
-      
-</div>
-       
-         <Card 
-            key={character.id}  
-            name={character.name}
-            status={character.status}
-            species={character.species}
-            gender={character.gender}
-            image={character.image}
-            episodes={character.episode}
-            location={character.location}
-            origin={character.origin}
-          />
-          
-  );
+
 };
 
     

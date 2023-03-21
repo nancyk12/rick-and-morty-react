@@ -1,0 +1,16 @@
+body {
+	background-color: hsla(225, 100%, 94%, 0.801);
+
+}
+.App {
+  text-align: center;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  line-height: 1.666;
+  background: #c0d2d4;
+  color: #555;
+}
+
