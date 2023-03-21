@@ -1,98 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Card from "./components/Card";
+import Header from "./components/Header";
+//import NewCard from "./components/NewCard";
 
-//import "./styles.css";
 
-const App = () => {
-  const [characters, setCharacters] = useState([]);
 
-  const fetchCharacters = () => {
-    fetch(`https://rickandmortyapi.com/api/character`)
-    .then(response => response.json())
-    .then((json) => setCharacters(json))
+
+function App() {
+  const [cardList, setCardList] = React.useState([])
+
+  async function getAPI() {
+    await fetch(`https://rickandmortyapi.com/api/character/`)
+      .then(response => response.json())
+      .then(data => setCardList(data.results));
   }
 
-  useEffect(() => {
-   fetchCharacters();
-}, [])
+  React.useEffect(() => {
+    getAPI();
 
+  }, []);
+ 
+
+console.log(cardList)
   return (
-
-    <div>
-
-    <h1 className="heading">Rick and Morty Characters</h1>
-   
-  
-
-    <Card 
-    key={characters.id}  
-    name={characters.name}
-    status={characters.status}
-    species={characters.species}
-    gender={characters.gender}
-    image={characters.image}
-    episodes={characters.episode}
-    location={characters.location}
-    origin={characters.origin}
-  />
-  </div>
-  )
-
-    
-  // )
-  // useEffect(() => {
-  //     async function getCharacters(){
-  //     let response = await fetch(
-  //      `https://rickandmortyapi.com/api/character?page=${count}`
-  //     );
-  //     let data = await response.json();
-  //     setAllCharacters(data.results);
-  //     setTotalPages(data.info.pages);
-  //     }
-      
-  //   getAllCharacters();
-  //   }, [count]);
-
-  //   let next = () => {
-  //     setCount((prevCount) => prevCount + 1);
-  //   };
-
-  //   let prevCount = () => {
-  //     setCount((prevCount) => prevCount - 1);
-  //   };
-
-
-};
-
-    
-        
-  
-/*
-
-let createCard = character => (
-     <Card 
-      key={character.id}  
-      name={character.name}
-      status={character.status}
-      species={character.species}
-      gender={character.gender}
-      img={character.imgURL}
-      episodes={character.episode}
-      location={character.location}
-      origin={character.origin}
-    />
-    );
-    
-   
-// map function?
-let App = () => (
-    <div>
-      <h1 className="heading">Rick and Morty Characters</h1>
-      {characters.map(createCard)} 
-
+    <div className="container-sm text-center row row-cols-4">
+      <Header />
+      <Card characters ={cardList}/>
+  {/* <NewCard characters={cardList}/>*/}
     </div>
   );
-*/
+}
 
 export default App;
-
